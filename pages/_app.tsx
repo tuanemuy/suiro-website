@@ -1,10 +1,37 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect } from "react";
-import { UnflexibleProvider } from "@unflexible/ui-core";
+import {
+  UnflexibleProvider,
+  PartialConfig,
+  PartialInitialProps,
+} from "@unflexible/ui-core";
 import "@unflexible/ui-core/css";
 import "@unflexible/ui-next-page/css";
 import "styles/globals.css";
+
+const config: PartialConfig = {
+  fontFamily:
+    '"Tazugane", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
+};
+
+const initialProps: PartialInitialProps = {
+  plainText: {
+    letterSpacing: {
+      p: ".1em",
+      h1: ".1em",
+      h2: ".1em",
+      h3: ".1em",
+      h4: ".1em",
+      h5: ".1em",
+      ul: ".1em",
+      ol: ".1em",
+      a: ".1em",
+      small: ".1em",
+      strong: ".1em",
+    },
+  },
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -37,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
 
-      <UnflexibleProvider>
+      <UnflexibleProvider config={config} initialProps={initialProps}>
         <Component {...pageProps} />
       </UnflexibleProvider>
     </>

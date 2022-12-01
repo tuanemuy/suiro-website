@@ -14,7 +14,7 @@ export default function Home() {
         <Columns align="center" justify="center">
           <Block height={{ xl: "auto" }}>
             <Stacked height={{ xl: "auto" }}>
-              <Block width={{ xl: "320px" }}>
+              <Block width={{ xl: "360px", xs: "300px" }} maxWidth="100%">
                 <img
                   src={url("images/sitelogo.png")}
                   alt="スタジオ・スイロ"
@@ -25,7 +25,7 @@ export default function Home() {
 
             <Stacked height={{ xl: "auto" }} padding={{ xl: [0.25, 0] }}>
               <PlainText
-                fontSize={{ h1: { xl: 1.25 } }}
+                fontSize={{ h1: { xl: 1.25, xs: 1 } }}
                 textAlign={{ h1: "center" }}
                 color={{ h1: "#4f8395" }}
               >
@@ -34,8 +34,8 @@ export default function Home() {
             </Stacked>
 
             <Stacked height={{ xl: "auto" }} padding={{ xl: [1, 0] }}>
-              <PlainText textAlign={{ p: "center" }}>
-                <p>Under construction...</p>
+              <PlainText textAlign={{ p: "center" }} fontWeight={{ p: 700 }}>
+                <p>UNDER CONSTRUCTION</p>
               </PlainText>
             </Stacked>
           </Block>
