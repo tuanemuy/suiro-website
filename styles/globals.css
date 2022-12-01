@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Tazugane";
+  src: url("../public/fonts/TazuganeGothicStdN-Medium.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tazugane";
+  src: url("../public/fonts/TazuganeGothicStdN-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "palt";
+  letter-spacing: 0.1em;
+}
