@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
-    "@unflexible/ui-core": "^0.3.9",
+    "@unflexible/ui-core": "^0.3.14",
     "@unflexible/ui-next-page": "^0.2.7",
     "next": "13.0.5",
     "polished": "^4.2.2",
