@@ -9,6 +9,7 @@ import {
 import "@unflexible/ui-core/css";
 import "@unflexible/ui-next-page/css";
 import "styles/globals.css";
+import { size } from "config";
 
 const config: PartialConfig = {
   fontFamily:
@@ -16,7 +17,18 @@ const config: PartialConfig = {
 };
 
 const initialProps: PartialInitialProps = {
+  wrap: {
+    width: {
+      xl: `${size.grid * 35}px`,
+      l: `${size.grid * 24}px`,
+      m: `${size.grid * 22}px`,
+      s: "90vw",
+    },
+  },
   plainText: {
+    lineHeight: {
+      p: 2,
+    },
     letterSpacing: {
       p: ".1em",
       h1: ".1em",
