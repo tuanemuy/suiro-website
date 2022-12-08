@@ -48,7 +48,7 @@ async function handlePost(body: FormFields): Promise<Result> {
           name: "Studio.Suiro（スタジオ・スイロ）",
         },
         replyTo: {
-          email: process.env.CONTACT_MAIL_FROM || "",
+          email: process.env.CONTACT_NOTIFY_TO || "",
           name: "Studio.Suiro（スタジオ・スイロ）",
         },
         templateId: "d-9ffc1a025ce64182bc58837489e7bdca",
