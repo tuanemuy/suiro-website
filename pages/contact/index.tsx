@@ -53,31 +53,44 @@ export default function ContactPage() {
   const [message, setMessage] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<Field> = async (input) => {
+    // @ts-ignore
+    if (!window.grecaptcha) {
+      setMessage(
+        "上手く問い合わせできませんでした。<br/>もう一度お試しください。"
+      );
+      return;
+    }
+
     setIsBusy(true);
 
-    try {
-      const result = await fetch(url("api/contact"), {
-        method: "POST",
-        body: JSON.stringify(input),
-      });
-      const data = await result.json();
+    // @ts-ignore
+    window.grecaptcha.ready(async () => {
+      try {
+        // @ts-ignore
+        const token = await window.grecaptcha.execute(
+          process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "",
+          { action: "homepage" }
+        );
 
-      if (data.isSuccess) {
-        router.push(url("contact/thanks"));
-      } else {
-        console.error(data.error);
+        const result = await fetch(url("api/contact"), {
+          method: "POST",
+          body: JSON.stringify({ ...input, token }),
+        });
+        const data = await result.json();
+
+        if (data.isSuccess) {
+          router.push(url("contact/thanks"));
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (e) {
+        console.error(e);
         setIsBusy(false);
         setMessage(
           "上手く問い合わせできませんでした。<br/>もう一度お試しください。"
         );
       }
-    } catch (e) {
-      console.error(e);
-      setIsBusy(false);
-      setMessage(
-        "上手く問い合わせできませんでした。<br/>もう一度お試しください。"
-      );
-    }
+    });
 
     setIsBusy(false);
   };
@@ -199,6 +212,26 @@ export default function ContactPage() {
                     {errors.privacy && (
                       <p className="error">{errors.privacy.message}</p>
                     )}
+                  </div>
+
+                  <div className="line">
+                    <p className="en note">
+                      This site is protected by reCAPTCHA and the Google{" "}
+                      <Link
+                        href="https://policies.google.com/privacy"
+                        target="_blank"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="https://policies.google.com/terms"
+                        target="_blank"
+                      >
+                        Terms of Service
+                      </Link>{" "}
+                      apply.
+                    </p>
                   </div>
                 </Form>
               </Block>

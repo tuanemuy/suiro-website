@@ -1,15 +1,16 @@
 import type { AppProps } from "next/app";
-import Head from "next/head";
 import { useEffect } from "react";
+import "@unflexible/ui-core/css";
+import "@unflexible/ui-next-page/css";
+import "styles/globals.css";
+import { size } from "config";
+
+import Head from "next/head";
 import {
   UnflexibleProvider,
   PartialConfig,
   PartialInitialProps,
 } from "@unflexible/ui-core";
-import "@unflexible/ui-core/css";
-import "@unflexible/ui-next-page/css";
-import "styles/globals.css";
-import { size } from "config";
 
 const config: PartialConfig = {
   fontFamily:
