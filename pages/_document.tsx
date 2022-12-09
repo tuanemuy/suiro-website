@@ -7,6 +7,12 @@ export default function Document() {
     <Html lang="ja">
       <Head>
         <script
+          async
+          src={`https://www.google.com/recaptcha/api.js?render=${
+            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""
+          }`}
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

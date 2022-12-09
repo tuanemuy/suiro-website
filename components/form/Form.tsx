@@ -41,6 +41,11 @@ const Component = styled.form`
     }
   }
 
+  .note {
+    font-size: 0.8rem;
+    color: #999999;
+  }
+
   .label {
     &.required::after {
       content: "*";

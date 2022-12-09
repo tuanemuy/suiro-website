@@ -29,14 +29,37 @@ export default async function handler(
   }
 }
 
-type FormFields = {
+type FormFieldsWithToken = {
   name: string;
   email: string;
   message: string;
+  token: string;
 };
 
-async function handlePost(body: FormFields): Promise<Result> {
+async function handlePost(body: FormFieldsWithToken): Promise<Result> {
   try {
+    const verify = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `secret=${
+          process.env.RECAPTCHA_SECRET_KEY || ""
+        }&response=${body.token}`,
+      }
+    );
+    const verificationResult = await verify.json();
+    console.log(verificationResult);
+
+    if (!verificationResult.success) {
+      return {
+        isSuccess: false,
+        error: "Failed to verify with reCaptcha.",
+      };
+    }
+
     const sendMails = [
       sgMail.send({
         to: {

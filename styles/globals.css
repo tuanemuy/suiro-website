@@ -36,3 +36,8 @@ body img {
 body .en {
   letter-spacing: 0;
 }
+
+.grecaptcha-badge {
+  z-index: 100;
+  visibility: hidden;
+}
