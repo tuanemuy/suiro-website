@@ -37,7 +37,7 @@ export default function HomePage() {
                   l: `${size.grid * 18}px`,
                   m: `${size.grid * 16}px`,
                   s: `${size.grid * 12}px`,
-                  xs: `${size.grid * 9}px`,
+                  xs: "90%",
                 }}
                 maxWidth="100%"
               >
