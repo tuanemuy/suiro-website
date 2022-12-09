@@ -53,15 +53,16 @@ export default function ContactPage() {
   const [message, setMessage] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<Field> = async (input) => {
+    setIsBusy(true);
+
     // @ts-ignore
     if (!window.grecaptcha) {
+      setIsBusy(false);
       setMessage(
         "上手く問い合わせできませんでした。<br/>もう一度お試しください。"
       );
       return;
     }
-
-    setIsBusy(true);
 
     // @ts-ignore
     window.grecaptcha.ready(async () => {
